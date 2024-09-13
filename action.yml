@@ -32,6 +32,10 @@ inputs:
     description: "Also cache on workflow failures"
     default: "true"
     required: false
+  cache-all-crates:
+    description: "Determines which crates are cached. If `true` all crates will be cached, otherwise only dependent crates will be cached. Useful if additional crates are used for CI tooling."
+    default: "false"
+    required: false
   matcher:
     description: "Enable the Rust problem matcher"
     required: false
@@ -181,3 +185,4 @@ runs:
       with:
         workspaces: ${{inputs.cache-workspaces}}
         cache-on-failure: ${{inputs.cache-on-failure}}
+        cache-all-crates: ${{inputs.cache-all-crates}}
